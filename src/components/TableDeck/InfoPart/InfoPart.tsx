@@ -10,9 +10,19 @@ type PropsType = {
   isPlayerAttack: boolean;
   onClearDeck: () => void;
   onGetCard: () => void;
+  isRestart: boolean;
+  restart: () => void;
 }
 
-const InfoPart: FC<PropsType> = ({ trump, cardBalance, isPlayerAttack, onClearDeck, onGetCard }) => {
+const InfoPart: FC<PropsType> = ({
+  trump,
+  cardBalance,
+  isPlayerAttack,
+  onClearDeck,
+  onGetCard,
+  isRestart,
+  restart,
+}) => {
 
   return (
     <div className={styles.contentWrapper}>
@@ -28,13 +38,22 @@ const InfoPart: FC<PropsType> = ({ trump, cardBalance, isPlayerAttack, onClearDe
         </div>
       </div>
       <div>
-        <button
-          className={`${styles.btn} ${isPlayerAttack ? styles.bitoButton : styles.getButton}`}
-          onClick={isPlayerAttack ? onClearDeck : onGetCard}
-          disabled={!(battleField.cards.player.length || battleField.cards.computer.length)}
-        >
-          {isPlayerAttack ? 'Бито' : 'Беру'}
-        </button>
+        {isRestart ? (
+          <button
+            className={`${styles.btn} ${styles.restartBtn}`}
+            onClick={restart}
+          >
+            Заново!
+          </button>
+        ) : (
+          <button
+            className={`${styles.btn} ${isPlayerAttack ? styles.bitoButton : styles.getButton}`}
+            onClick={isPlayerAttack ? onClearDeck : onGetCard}
+            disabled={!(battleField.cards.player.length || battleField.cards.computer.length)}
+          >
+            {isPlayerAttack ? 'Бито' : 'Беру'}
+          </button>
+        )}
       </div>
     </div>
   );

@@ -16,6 +16,17 @@ const TableDeck: FC = () => {
     computerCards.addCards(firstComputerCards);
   }
 
+  const restartGame = () => {
+    const { firstPlayerCards, firstComputerCards } = game.startGame();
+
+    battleField.clearBattleField(playerCards, computerCards)
+    playerCards.clearCards();
+    computerCards.clearCards();
+
+    playerCards.addCards(firstPlayerCards);
+    computerCards.addCards(firstComputerCards);
+  }
+
   const computerAction = () => {
     if (!game.isPlayerStep) {
       const allBattleCards = [...battleField.cards.computer, ...battleField.cards.player];
@@ -61,6 +72,8 @@ const TableDeck: FC = () => {
           isPlayerAttack={game.isPlayerAttack}
           onClearDeck={() => battleField.clearBattleField(playerCards, computerCards)}
           onGetCard={getCard}
+          isRestart={!playerCards.cards.length || !computerCards.cards.length}
+          restart={restartGame}
         />
       </div>
       <div className={styles.deckWrapper}>
