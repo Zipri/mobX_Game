@@ -67,7 +67,11 @@ class Game {
   }
 
   addPlayersCards(player: any, computer: any) {
+    const playerNeedCards = 6 - player.cards.length;
+    const computerNeedCards = 6 - computer.cards.length;
 
+    player.addCards(this.reduceCards(playerNeedCards > 0 ? playerNeedCards : 0));
+    computer.addCards(this.reduceCards(computerNeedCards > 0 ? computerNeedCards : 0));
   }
 
   defineJuniorTrumpCard(cards: Card[]) {

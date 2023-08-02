@@ -4,16 +4,17 @@ import styles from './SimpleCard.module.scss';
 
 type PropsType = {
   card: Card;
+  isOnDeck?: boolean;
   isPlayer?: boolean;
   onClick?: () => void;
 }
 
-const SimpleCard: FC<PropsType> = ({ card, onClick, isPlayer }) => {
+const SimpleCard: FC<PropsType> = ({ card, isOnDeck, isPlayer, onClick }) => {
   return (
     <div onClick={onClick}>
       <img
         className={`${styles.card} ${isPlayer ? styles.playerCard : ''}`}
-        src={isPlayer ? card.front : card.back}
+        src={(isPlayer || isOnDeck) ? card.front : card.back}
         key={card.id}
         alt={`${card.type} ${card.rank}`}
       />

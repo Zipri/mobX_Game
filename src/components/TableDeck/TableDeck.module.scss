@@ -1,6 +1,20 @@
-.deckWrapper {
+.tableWrapper {
   width: 100vw;
   height: 100vh;
+
+  display: flex;
+  align-items: center;
+}
+
+.infoDeckWrapper {
+  height: 100vh;
+  width: 30%;
+
+}
+
+.deckWrapper {
+  height: 100vh;
+  width: 70%;
 
   display: flex;
   flex-direction: column;

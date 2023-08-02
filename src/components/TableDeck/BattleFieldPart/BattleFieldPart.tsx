@@ -2,6 +2,8 @@ import React, {FC} from 'react';
 import {DeskCards} from "../../../types/types";
 import SimpleCard from "../../SimpleCard/SimpleCard";
 
+import styles from './BattleFieldPart.module.scss';
+
 type PropsType = {
   cards: DeskCards;
 }
@@ -9,11 +11,11 @@ type PropsType = {
 const BattleFieldPart: FC<PropsType> = ({ cards }) => {
   return (
     <div>
-      <div>
-        {cards.computer.map((item) => <SimpleCard key={item.id} card={item} />)}
+      <div className={styles.battleCardsWrapper}>
+        {cards.computer.map((item) => <SimpleCard key={item.id} isOnDeck card={item} />)}
       </div>
-      <div>
-        {cards.player.map((item) => <SimpleCard key={item.id} card={item} />)}
+      <div className={styles.battleCardsWrapper}>
+        {cards.player.map((item) => <SimpleCard key={item.id} isOnDeck card={item} />)}
       </div>
     </div>
   );
