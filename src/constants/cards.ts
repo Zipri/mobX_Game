@@ -6,7 +6,7 @@ const chervi = (key: string | number) => `assets/fronts/hearts_${key}.svg`;
 const kresti = (key: string | number) => `assets/fronts/clubs_${key}.svg`;
 const piki = (key: string | number) => `assets/fronts/spades_${key}.svg`;
 
-export const cards: Array<Card> = [
+export const CARDS: Array<Card> = [
   { id: 1, rank: 6, type: TypeCard.bubi, front: bubi(6), back },
   { id: 2, rank: 6, type: TypeCard.chervi, front: chervi(6), back },
   { id: 3, rank: 6, type: TypeCard.kresti, front: kresti(6), back },

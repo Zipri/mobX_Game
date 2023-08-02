@@ -1,5 +1,5 @@
 import {Card, TypeCard} from "../types/types";
-import {cards} from "../constants/cards";
+import {CARDS} from "../constants/cards";
 import {action, makeObservable, observable} from "mobx";
 
 class Game {
@@ -8,7 +8,7 @@ class Game {
   isGetCard: boolean = false;
   isPlayerAttack: boolean = false;
   deckCards: Array<Card> = [];
-  attackCard: Card = cards[0];
+  attackCard: Card = CARDS[0];
 
   constructor() {
     makeObservable(this, {
@@ -55,7 +55,7 @@ class Game {
   }
 
   startGame() {
-    this.deckCards = cards;
+    this.deckCards = CARDS;
     this.mixDeck();
 
     const firstPlayerCards = this.reduceCards(6);
