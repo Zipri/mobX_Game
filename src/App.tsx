@@ -1,9 +1,11 @@
 import React from 'react';
 import TableDeck from "./components/TableDeck/TableDeck";
 
+import './App.scss';
+
 const App = () => {
   return (
-    <div>
+    <div className={'app'}>
       <TableDeck />
     </div>
   );

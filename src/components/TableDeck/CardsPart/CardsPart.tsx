@@ -12,7 +12,7 @@ type PropsType = {
 
 const CardsPart: FC<PropsType> = ({ cards, onStep, isPlayer }) => {
   return (
-    <div className={styles.cardsWrapper}>
+    <div className={`${styles.cardsWrapper} ${cards.length < 7 ? styles.center : ''}`}>
       {cards.map(
         (item) => <SimpleCard key={item.id} card={item} isPlayer={isPlayer} onClick={() => onStep && onStep(item)} />
       )}
