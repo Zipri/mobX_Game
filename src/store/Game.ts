@@ -1,9 +1,9 @@
-import {Card, TypeCard} from "../types/types";
+import {Card} from "../types/types";
 import {CARDS} from "../constants/cards";
 import {action, makeObservable, observable} from "mobx";
 
 class Game {
-  trumpCard: TypeCard = TypeCard.bubi;
+  trumpCard: Card = CARDS[35];
   isPlayerStep: boolean = false;
   isGetCard: boolean = false;
   isPlayerAttack: boolean = false;
@@ -51,7 +51,7 @@ class Game {
 
   mixDeck() {
     this.deckCards = this.deckCards.sort(() => Math.random() - 0.5);
-    this.trumpCard = this.deckCards[this.deckCards.length - 1].type
+    this.trumpCard = this.deckCards[this.deckCards.length - 1];
   }
 
   startGame() {
@@ -75,7 +75,7 @@ class Game {
   }
 
   defineJuniorTrumpCard(cards: Card[]) {
-    const trumpRanks = cards.filter((card) => card.type === this.trumpCard)
+    const trumpRanks = cards.filter((card) => card.type === this.trumpCard.type)
       .map((card) => card.rank);
 
     return trumpRanks.length ? Math.min(...trumpRanks) : 0;

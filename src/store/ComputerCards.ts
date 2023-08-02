@@ -26,13 +26,13 @@ class ComputerCards extends PlayersCards {
     if (attackCard) {
       const higherCards = this.cards.filter(card => card.type === attackCard?.type
         && card.rank > attackCard?.rank);
-      const trumpCards = this.cards.filter(card => card.type === game.trumpCard);
+      const trumpCards = this.cards.filter(card => card.type === game.trumpCard.type);
 
       if (higherCards.length) {
         return this.defineJuniorCard(higherCards);
       }
 
-      if (attackCard.type !== game.trumpCard && trumpCards.length) {
+      if (attackCard.type !== game.trumpCard.type && trumpCards.length) {
         return this.defineJuniorCard(trumpCards);
       }
 
@@ -47,8 +47,8 @@ class ComputerCards extends PlayersCards {
       let cardForAttack = null;
 
       if (!battleFieldCards.length) {
-        const trumpCards = this.cards.filter(card => card.type === game.trumpCard);
-        const notTrumpCards = this.cards.filter(card => card.type !== game.trumpCard);
+        const trumpCards = this.cards.filter(card => card.type === game.trumpCard.type);
+        const notTrumpCards = this.cards.filter(card => card.type !== game.trumpCard.type);
 
         if (notTrumpCards.length) {
           cardForAttack = this.defineJuniorCard(notTrumpCards);

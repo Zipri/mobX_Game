@@ -9,7 +9,9 @@
 .infoDeckWrapper {
   height: 100vh;
   width: 30%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .deckWrapper {

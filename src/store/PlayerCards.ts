@@ -24,23 +24,23 @@ class PlayerCards extends PlayersCards {
 
   playerAttack(card: Card, battleFieldCards: Card[]) {
     if (!battleFieldCards.length || battleFieldCards.some(c => c.rank === card.rank)) {
-      game.setAttackCard(card)
-      this.reduceCard(card.id)
-      return card
+      game.setAttackCard(card);
+      this.reduceCard(card.id);
+      return card;
     }
     alert('Такой карты нет на поле битвы')
   }
 
   playerDefense(card: Card, attackCard: Card) {
-    const strongerCard = card.rank > attackCard.rank && card.type === attackCard.type
-    const strongerTrumpCard = attackCard.type !== game.trumpCard && card.type === game.trumpCard
+    const strongerCard = card.rank > attackCard.rank && card.type === attackCard.type;
+    const strongerTrumpCard = attackCard.type !== game.trumpCard.type && card.type === game.trumpCard.type;
 
     if (strongerCard || strongerTrumpCard) {
       this.reduceCard(card.id)
       return card
     }
 
-    alert('У него карта сильнее')
+    alert('У него карта сильнее');
   }
 
 }

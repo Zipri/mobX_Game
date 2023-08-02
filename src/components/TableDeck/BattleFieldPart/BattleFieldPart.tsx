@@ -10,7 +10,7 @@ type PropsType = {
 
 const BattleFieldPart: FC<PropsType> = ({ cards }) => {
   return (
-    <div>
+    <div className={styles.contentWrapper}>
       <div className={styles.battleCardsWrapper}>
         {cards.computer.map((item) => <SimpleCard key={item.id} isOnDeck card={item} />)}
       </div>

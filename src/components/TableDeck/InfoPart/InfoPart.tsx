@@ -1,9 +1,11 @@
 import React, {FC} from 'react';
 import styles from './InfoPart.module.scss';
-import {TypeCard} from "../../../types/types";
+import {Card} from "../../../types/types";
+import SimpleCard from "../../SimpleCard/SimpleCard";
+import {battleField} from "../../../store";
 
 type PropsType = {
-  trump: TypeCard;
+  trump: Card;
   cardBalance: number;
   isPlayerAttack: boolean;
   onClearDeck: () => void;
@@ -11,24 +13,26 @@ type PropsType = {
 }
 
 const InfoPart: FC<PropsType> = ({ trump, cardBalance, isPlayerAttack, onClearDeck, onGetCard }) => {
-  const trumps = {
-    'chervi': { color: 'red', code: { __html: '&#9829;', }, },
-    'bubi': { color: 'red', code: { __html: '&#9830;' }, },
-    'kresti': { color: 'black', code: { __html: '&#9827;' }, },
-    'piki': { color: 'black', code: { __html: '&#9824;' }, },
-  }
-
 
   return (
     <div className={styles.contentWrapper}>
-      <div>
-        <div className={`${trumps[trump].color} ${styles.trumpItem}`} dangerouslySetInnerHTML={trumps[trump].code} />
-        <div>
-          Остаток карт: {cardBalance}
+      <h3 className={styles.header}>
+        Остаток карт: {cardBalance}
+      </h3>
+      <div className={styles.cardsPart}>
+        <div className={styles.cardsDeck}>
+          <SimpleCard card={trump} />
+        </div>
+        <div className={styles.trump}>
+          <SimpleCard card={trump} isOnDeck />
         </div>
       </div>
       <div>
-        <button onClick={isPlayerAttack ? onClearDeck : onGetCard}>
+        <button
+          className={`${styles.btn} ${isPlayerAttack ? styles.bitoButton : styles.getButton}`}
+          onClick={isPlayerAttack ? onClearDeck : onGetCard}
+          disabled={!(battleField.cards.player.length || battleField.cards.computer.length)}
+        >
           {isPlayerAttack ? 'Бито' : 'Беру'}
         </button>
       </div>

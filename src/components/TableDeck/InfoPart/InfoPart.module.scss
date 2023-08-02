@@ -3,9 +3,83 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 45px;
+
+  height: 60%;
+  padding: 0 40px;
+
+  border: 1px solid lightgray;
+  border-radius: 10px;
+
+  box-shadow: 13px 10px 7px 0px rgba(0,0,0,0.1);
 }
 
 .trumpItem {
   font-size: 100px;
   text-align: center;
+}
+
+.cardsPart {
+  height: 142px;
+  position: relative;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+}
+
+.cardsDeck {
+  transform: rotate(270deg);
+  position: absolute;
+  top: -25px;
+  z-index: 10;
+}
+
+.trump {
+  transition: .5s;
+  cursor: help;
+}
+
+.trump:hover {
+  transform: translateY(40px);
+}
+
+.btn {
+  background-color: white;
+
+  border: 1px solid blue;
+  border-radius: 50%;
+
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+
+  cursor: pointer;
+  transition: .5s;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  border-color: lightgray;
+}
+
+.getButton {
+  border-color: blue;
+}
+
+.getButton:hover {
+  border-color: blue;
+  background-color: blue;
+  color: white;
+}
+
+.bitoButton {
+  border-color: green;
+}
+
+.bitoButton:hover {
+  border-color: green;
+  background-color: green;
+  color: white;
 }
