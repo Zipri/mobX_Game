@@ -64,9 +64,17 @@ const TableDeck: FC = () => {
         />
       </div>
       <div className={styles.deckWrapper}>
-        <CardsPart cards={computerCards.cards} />
+        <CardsPart
+          isPlayerWin={!playerCards.cards.length}
+          isComputerWin={!computerCards.cards.length}
+          cards={computerCards.cards}
+        />
         <BattleFieldPart cards={battleField.cards} />
-        <CardsPart cards={playerCards.cards} isPlayer onStep={handleClickCard} />
+        <CardsPart
+          isPlayerWin={!playerCards.cards.length}
+          isComputerWin={!computerCards.cards.length}
+          cards={playerCards.cards} isPlayer onStep={handleClickCard}
+        />
       </div>
     </div>
   );
