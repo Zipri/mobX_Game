@@ -1,0 +1,15 @@
+.card {
+    width: 100px;
+}
+
+.playerCard {
+    cursor: pointer;
+    transition: .5s;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.playerCard:hover {
+    border-color: blue;
+    transform: translateY(-10px);
+}
